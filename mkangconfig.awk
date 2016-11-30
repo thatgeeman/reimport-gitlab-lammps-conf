@@ -1,4 +1,4 @@
-BEGIN { n=16; # chainlength
+BEGIN { n=16; # chainlength 16
   x=1;
   nx=24; nz=16; ny=1; # replication (quasi-hexagonal lattice in xz-plane)
   nc=nx*nz*ny #no of chains
