@@ -1,18 +1,20 @@
-BEGIN { n=16; # chainlength
+BEGIN { n=64; # chainlength
   b0=0.967;   # bond length
-  nx=24; nz=16; ny=1; # replication (quasi-hexagonal lattice in xz-plane)
+  nx=1; nz=32; ny=12; # replication (quasi-hexagonal lattice in yz-plane)
   # nx*ny*nz=number of chains
-  box=20.0;     # boxsize > ny*(b0*(n-1)+1)
-  xx0=0.0; yy0=2.089; zz0=0.0; # origin
-  for (j=0; j<ny; j++) {
-    y0 = yy0 + j*(box/ny);
-    for (k=0; k<nx; k++) {
-      x0 = xx0 + k*(box/nx);
-      for (l=0; l<nz; l++) {
-        z0 = zz0 + (l+0.5*(k%2))*(box/nz);
-        pch++;
-        print ++p,pch,1,x0,y0,z0,0,0,0;
-        for (i=1;i<n; i++) print ++p,pch,1, x0,y0+b0*i,z0,0,0,0;
+  boxz=40;    # boxsize > nx*(b0*(n-1)+1)
+  boxy=17;
+  boxx=63;
+  xx0=0.0; yy0=2.0895; zz0=0.0; # origin
+  for (k=0; k<nx; k++) {
+    x0 = xx0 + k*(boxx/nx);
+     for (l=0; l<nz; l++) {
+      z0 = zz0 + (l+0.5*(k%2))*(boxz/nz);
+       for (j=0; j<ny; j++) {
+       y0 = yy0 + j*(boxy/ny);
+       pch++;
+       print ++p,pch,1,x0,y0,z0,0 ,0,0;
+       for (i=1;i<n; i++) print ++p,pch,1, x0+b0*i,y0,z0,0,0,0; #giving a slope
       }
     }
   }

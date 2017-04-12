@@ -4,11 +4,11 @@ BEGIN{ n=64; # chainlength
   nx=1; nz=32; ny=12; # replication (quasi-hexagonal lattice in xz-plane)
   nc=nx*nz*ny #no of chains
   nt=na*n # total no of atoms
-  nb=na*(n-1) #no of bonds
+  nang=na*(n-2) #no of angles
 for(j=0;j<nc;j++)
-	{  for(i=1;i<=(n-1);i++)
+	{  for(i=1;i<=(n-2);i++)
 		{ 	
-			print x,1,(j*n)+i,(j*n)+i+1;
+			print x,1,(j*n)+i,(j*n)+i+1,(j*n)+i+2;
 	 	        x++;	
 		}
 	   	
