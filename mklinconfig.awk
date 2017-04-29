@@ -3,9 +3,9 @@ BEGIN { n=64; # chainlength
   nx=1; nz=32; ny=12; # replication (quasi-hexagonal lattice in yz-plane)
   # nx*ny*nz=number of chains
   boxz=40;    # boxsize > nx*(b0*(n-1)+1)
-  boxy=17;
+  boxy=40;
   boxx=63;
-  xx0=0.0; yy0=2.0895; zz0=0.0; # origin
+  xx0=0.0; yy0=0.0; zz0=0.0; # origin
   for (k=0; k<nx; k++) {
     x0 = xx0 + k*(boxx/nx);
      for (l=0; l<nz; l++) {
