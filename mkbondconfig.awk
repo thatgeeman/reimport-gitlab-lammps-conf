@@ -1,4 +1,4 @@
-BEGIN{ n=64; # chainlength
+BEGIN{ n=128; # chainlength
   b0=0.967;   # bond length
   x=1;
   nx=1; nz=32; ny=12; # replication (quasi-hexagonal lattice in xz-plane)

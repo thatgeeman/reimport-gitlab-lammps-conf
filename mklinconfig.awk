@@ -1,10 +1,10 @@
-BEGIN { n=64; # chainlength
+BEGIN { n=128; # chainlength
   b0=0.967;   # bond length
   nx=1; nz=32; ny=12; # replication (quasi-hexagonal lattice in yz-plane)
   # nx*ny*nz=number of chains
   boxz=40;    # boxsize > nx*(b0*(n-1)+1)
   boxy=40;
-  boxx=63;
+  boxx=124;
   xx0=0.0; yy0=0.0; zz0=0.0; # origin
   for (k=0; k<nx; k++) {
     x0 = xx0 + k*(boxx/nx);
