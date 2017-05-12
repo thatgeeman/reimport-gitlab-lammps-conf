@@ -4,7 +4,7 @@ LAMMPS-data extracted frm 401 of mdT100-19.trj  pbc111 sx0 sy0 sz0
 
  1 atom types
 
- 0.0 124 xlo xhi
+ 0.0 160 xlo xhi
  0.0 40 ylo yhi
  0.0 40 zlo zhi
 
