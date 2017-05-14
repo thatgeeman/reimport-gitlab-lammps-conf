@@ -1,12 +1,14 @@
 LAMMPS-data extracted frm 401 of mdT100-19.trj  pbc111 sx0 sy0 sz0
 
  98304 atoms
+ 97920 bonds
 
  1 atom types
+ 1 bond types
 
- 0.0 160 xlo xhi
- 0.0 40 ylo yhi
- 0.0 40 zlo zhi
+ 0.0 60 xlo xhi
+ 0.0 60 ylo yhi
+ 0.0 60 zlo zhi
 
 Atoms
 
