@@ -40,24 +40,25 @@ nbatom=N*(BS+M)
 nbbond=N*(BS+M)-1
 
 topo.write(header)
-a = 0
+ii = 1 # atom indice
+xx = 0
+a= 2
+factor=6
+topo.write( "%i 1 1 %f %f %f 0 0 0\n" % (1,0,0,0) )
 while a < nbatom :
-    if a == nbatom :
-        break
-    for k in range(a,(BS*(N-Ntemp))-1): #loop upto one block (BS) at a time
+    for k in range(a,(BS*(N-Ntemp))): #loop upto one block (BS) at a time
         topo.write( "%i 1 1 %f %f %f 0 0 0\n" % (k,k-1,0,0) )
-        #                   x  y  z
-        ii=k+1 # point to begin the branch
-    for i in range(ii,ii+M):
-        for j in range(0,M):
-            if j>6: #set sub group in sidechain
-                ptype=3
-            else:
-                ptype=2
-       	topo.write("%i 1 %i %f %f %f 0 0 0\n"%(i,ptype,i-1,j,0))
-        a=i+1
+        #           atom     x  y  z                x  y  z
+        ii=k+1 # point to begin the branch indices
+        xx=k
+#        a=k-1
+    for j in range(a+(BS-1),(M+BS)): #subbranch cord
+        if j>(M+BS-factor): #set sub group in sidechain 6th atom id in subchain
+           ptype=3 # 1 3
+        else: # less than 6
+           ptype=2 # 1 2 
+       	topo.write("%i 1 %i %f %f %f 0 0 0\n"%(j,ptype,xx,j-(BS+1),0))
     Ntemp -= 1
-
 ###
 #topo.write("\n")
 #topo.write("Bonds\n")
