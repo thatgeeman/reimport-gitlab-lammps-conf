@@ -42,23 +42,29 @@ nbbond=N*(BS+M)-1
 topo.write(header)
 ii = 1 # atom indice
 xx = 0
+xx1 = 0
 a= 2
+aa=2
 factor=6
 topo.write( "%i 1 1 %f %f %f 0 0 0\n" % (1,0,0,0) )
-while a < nbatom :
-    for k in range(a,(BS*(N-Ntemp))): #loop upto one block (BS) at a time
-        topo.write( "%i 1 1 %f %f %f 0 0 0\n" % (k,k-1,0,0) )
+for i in range(a,nbatom):
+    for k in range(aa,(BS*(N-Ntemp))): #loop upto one block (BS) at a time
+        topo.write( "%i 1 1 %f %f %f 0 0 0\n" % (k,xx1+1,0,0) )
         #           atom     x  y  z                x  y  z
         ii=k+1 # point to begin the branch indices
-        xx=k
-#        a=k-1
-    for j in range(a+(BS-1),(M+BS)): #subbranch cord
+        xx1+=1
+        a=xx=k
+    for j in range(a+1,(BS+M)): #subbranch cord
         if j>(M+BS-factor): #set sub group in sidechain 6th atom id in subchain
            ptype=3 # 1 3
         else: # less than 6
            ptype=2 # 1 2 
-       	topo.write("%i 1 %i %f %f %f 0 0 0\n"%(j,ptype,xx,j-(BS+1),0))
-    Ntemp -= 1
+        topo.write("%i 1 %i %f %f %f 0 0 0\n"%(j,ptype,xx,j-BS,0))
+xx1=xx+1 #carrying x cord
+aa=j+1
+Ntemp-= 1
+
+ 
 ###
 #topo.write("\n")
 #topo.write("Bonds\n")
@@ -75,7 +81,7 @@ while a < nbatom :
 #    nbb+=1
 #for l in range(1,N+1): 
 #    for n in range(1,M):
-#	topo.write("%i 1 %i %i \n"%(nbb,BS*N+(l-1)*M+n,BS*N+1+(l-1)*M+n))
+#       topo.write("%i 1 %i %i \n"%(nbb,BS*N+(l-1)*M+n,BS*N+1+(l-1)*M+n))
 #        nbb+=1
 
 #topo.close()
